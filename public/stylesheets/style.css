@@ -26,6 +26,49 @@ p {
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+form {
+  width: 400px;
+  height: fit-content;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+form h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+form button {
+  padding: 8px;
+  font-weight: bold;
+  border-radius: 4px;
+  border: none;
+  background-color: rgb(167, 201, 87);
+}
+
+form button:hover {
+  background-color: rgb(106, 153, 78);
+}
+
+input {
+  padding: 10px;
+  background-color: rgb(52, 58, 64);
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+/* INDEX PAGE */
+
 .content {
   margin-top: 100px;
   display: flex;
@@ -69,4 +112,24 @@ p {
 
 .msg-bubble h2 {
   text-align: center;
+}
+
+.old-msg-box {
+  text-align: center;
+}
+
+/* LOGIN FORM PAGE*/
+
+
+/* ADMIN PAGE*/
+.admin-delete {
+  padding: 6px;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  background-color: rgb(193, 18, 31);
+}
+
+.admin-delete:hover {
+  background-color: rgb(120, 0, 0);
 }

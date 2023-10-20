@@ -9,6 +9,7 @@ require('dotenv').config();
 var indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register');
+const adminRouter = require('./routes/admin_panel');
 
 var app = express();
 const PORT = process.env.PORT || 3000;
@@ -42,6 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
+app.use('/admin', adminRouter);
 
 
 

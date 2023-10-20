@@ -3,7 +3,26 @@
   <%- include('./partials/head.ejs') %>
   <%- include('./partials/nav.ejs') %>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div class="content">
+      <form method="post" action="" class="bg-dark" class="login-form">
+        <h2>Login</h2>
+        <input
+        name="username"
+        id="username"
+        placeholder="Enter Username"
+        type="text"
+        required="true"
+        >
+
+        <input
+        name="password"
+        id="password"
+        placeholder="Enter Password"
+        type="text"
+        required="true"
+        >
+        <button type="submit">Login</button>
+      </form>
+    </div>
   </body>
 </html>

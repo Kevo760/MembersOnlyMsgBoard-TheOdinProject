@@ -3,7 +3,34 @@
   <%- include('./partials/head.ejs') %>
   <%- include('./partials/nav.ejs') %>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div class="content">
+      <% if (postData) { %>
+        <% postData.forEach(post => { %>
+          <div class="msg-box">
+            <div class="user-info">
+              <b><%=  post.user[0].username %></b>
+              <i><%= post.user[0].status %></i>
+            </div>
+            <div class="msg-info">
+              <b><%= post.createdAt.toDateString() %></b>
+              <p><%= post.message %></p>
+            </div>
+            <a href=<%= 'admin/'+post._id+'/delete' %>>
+              <i class="bi bi-trash-fill"></i>
+            </a>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <div class="msg-box">
+          <h2>There are not post available, please add a post.</h2>
+        </div>
+      <% } %>
+
+      <% if (nextPage !== null) { %>
+        <div class="old-msg-box">
+          <a href="admin/?page=<%= nextPage %>">View older messages</a>
+        </div>
+      <% } %>
+    </div>
   </body>
 </html>
