@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    username: { type: String, required: true, minLength: 3, maxLength: 100},
-    password: { type: String, required: true, minLength: 6 },
+    username: { type: String, required: true, minLength: 3, maxLength: 100, unique: true},
+    password: { type: String, required: true, minLength: 8 },
     status: {
       type: String,
       required: true,

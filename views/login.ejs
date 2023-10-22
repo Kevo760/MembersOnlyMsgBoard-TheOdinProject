@@ -4,7 +4,7 @@
   <%- include('./partials/nav.ejs') %>
   <body>
     <div class="content">
-      <form method="post" action="" class="bg-dark" class="login-form">
+      <form method="post" action="/" class="bg-dark" class="login-form">
         <h2>Login</h2>
         <input
         name="username"
@@ -18,10 +18,13 @@
         name="password"
         id="password"
         placeholder="Enter Password"
-        type="text"
+        type="password"
         required="true"
         >
         <button type="submit">Login</button>
+        <% if (typeof errorMsg !== 'undefined') { %>
+          <span class="err-msg"><%= errorMsg %></span>
+         <% } %>
       </form>
     </div>
   </body>

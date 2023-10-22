@@ -10,6 +10,8 @@ var indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register');
 const adminRouter = require('./routes/admin_panel');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 
 var app = express();
 const PORT = process.env.PORT || 3000;
@@ -39,6 +41,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URI
+  }),
+  cookie: { maxAge: new Date(Date.now() + 3600000)}
+}));
 
 app.use('/', indexRouter);
 app.use('/register', registerRouter);

@@ -4,7 +4,7 @@
   <%- include('./partials/nav.ejs') %>
   <body>
     <div class="content">
-      <form method="post" action="" class="bg-dark" class="login-form">
+      <form method="post" action="/register" class="bg-dark" class="login-form">
         <h2>Register</h2>
         <input
         name="username"
@@ -12,24 +12,30 @@
         placeholder="Enter Username"
         type="text"
         required="true"
+        pattern="^[^-\s]{3}$"
         >
 
         <input
         name="password"
         id="password"
         placeholder="Enter Password"
-        type="text"
+        type="password"
         required="true"
+        pattern="^[^-\s]{8}$"
         >
 
         <input
-        name="verifypassword"
-        id="verifypassword"
+        name="verifypw"
+        id="verifypw"
         placeholder="Enter Password Again"
-        type="text"
+        type="password"
         required="true"
+        pattern="^[^-\s]{8}$"
         >
         <button type="submit">Register</button>
+        <% if (typeof errorMsg !== 'undefined') { %>
+         <span class="err-msg"><%= errorMsg %></span>
+        <% } %>
       </form>
     </div>
   </body>

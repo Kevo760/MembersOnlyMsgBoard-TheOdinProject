@@ -67,6 +67,11 @@ input {
   border-radius: 4px;
 }
 
+.err-msg {
+  font-weight: bold;
+  color: tomato;
+}
+
 /* INDEX PAGE */
 
 .content {
@@ -81,7 +86,7 @@ input {
 
 .msg-box {
   max-height: fit-content;
-  width: 400px;
+  width: 420px;
   background-color: white;
   border-radius: 6px;
   padding: 10px 20px;
@@ -96,7 +101,7 @@ input {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 110px;
+  width: 120px;
   word-break: break-all;
 }
 
@@ -133,3 +138,5 @@ input {
 .admin-delete:hover {
   background-color: rgb(120, 0, 0);
 }
+
+/* REGISTER */
