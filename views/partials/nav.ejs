@@ -1,9 +1,21 @@
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">Mini Message Board</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      
+      <div class="right-nav">
+        <% if (typeof userData !== 'undefined') { %>
+         <a href="/addpost">
+          <button class="add-msg-btn" type="button">
+            Add Post
+          </button>
+         </a>
+        <% } %>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      
       <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel" style="width: 300px;">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
@@ -14,15 +26,27 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/register">Register</a>
-            </li>
-            <li class="nav-item">
+            <!-- If user data is NOT undefined and userData status is admin show admin panel link -->
+            <% if (typeof userData !== 'undefined' && userData.status === 'Admin') { %>
+              <li class="nav-item">
                 <a class="nav-link" href="/admin">Admin Panel</a>
-            </li>
+              </li>
+            <% } %>
+
+            <hr>
+            <!-- If userData is undefined show login or register else show log out -->
+            <% if (typeof userData === 'undefined') { %>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/register">Register</a>
+              </li>
+            <% } else { %>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Log out</a>
+              </li>
+            <% } %>
           </ul>
         </div>
       </div>

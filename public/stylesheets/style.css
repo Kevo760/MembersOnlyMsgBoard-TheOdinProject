@@ -72,6 +72,45 @@ input {
   color: tomato;
 }
 
+/* NAV */
+
+.add-msg-btn {
+  margin-top: 1.5px;
+  width: 100px;
+  height: 36px;
+  border-radius: 4px;
+  border: white solid 1px;
+}
+
+.right-nav {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+/* USER BOX */
+.user-box {
+  max-height: fit-content;
+  width: 420px;
+  color: white;
+  border-radius: 6px;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
+
+.premium-status {
+  color: rgb(255, 190, 11);
+}
+
+.admin-status {
+  color: rgb(167, 201, 87);
+}
+
+
 /* INDEX PAGE */
 
 .content {
@@ -106,7 +145,7 @@ input {
 }
 
 .msg-info {
-  width: 260px;
+  width: fit-content;
   overflow: auto;
 }
 
@@ -123,6 +162,8 @@ input {
   text-align: center;
 }
 
+
+
 /* LOGIN FORM PAGE*/
 
 
@@ -137,6 +178,10 @@ input {
 
 .admin-delete:hover {
   background-color: rgb(120, 0, 0);
+}
+
+.msg-box a {
+  margin-left: auto;
 }
 
 /* REGISTER */

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
   <%- include('./partials/head.ejs') %>
-  <%- include('./partials/admin_nav.ejs') %>
+  <%- include('./partials/nav.ejs') %>
   <body>
+    
     <div class="content">
+      <%- include('./partials/userbox') %>
       <% if (postData) { %>
         <% postData.forEach(post => { %>
           <div class="msg-box">

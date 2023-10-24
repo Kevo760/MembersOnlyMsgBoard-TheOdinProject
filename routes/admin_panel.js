@@ -3,9 +3,11 @@ var router = express.Router();
 const asyncHandler = require("express-async-handler");
 const Post = require('../models/Post');
 const Users = require('../models/User');
+const adminAuthMidware = require('./middleware/admin_auth_midware');
 
 /* GET Admin page. */
-router.get('/', asyncHandler( async (req, res, next) => {
+router.get('/', adminAuthMidware, asyncHandler( async (req, res, next) => {
+  const userData = req.userData;
 
   let perPage = 5;
   let page = req.query.page || 1;
@@ -27,13 +29,13 @@ router.get('/', asyncHandler( async (req, res, next) => {
   const nextPage = parseInt(page) + 1;
   const hasNextPage = nextPage <= Math.ceil(count / perPage);
 
-  res.render('admin_panel', { title: 'Mini Msg Board', postData: getPost, current: page, nextPage: hasNextPage ? nextPage : null});
+  return res.render('admin_panel', { title: 'Mini Msg Board', postData: getPost, current: page, nextPage: hasNextPage ? nextPage : null, userData});
 }
 ));
 
 
 /* GET delete of single message page. */
-router.get('/:id/delete', asyncHandler( async (req, res, next) => {
+router.get('/:id/delete', adminAuthMidware, asyncHandler( async (req, res, next) => {
   const post = await Post.findById(req.params.id).populate('user');
 
   if(post === null) {
@@ -43,7 +45,7 @@ router.get('/:id/delete', asyncHandler( async (req, res, next) => {
     return next(err);
 };
 
-  res.render('post_delete', { title: 'Delete a post', post});
+  res.render('post_delete', adminAuthMidware, { title: 'Delete a post', post});
 }
 ));
 

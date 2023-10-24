@@ -4,13 +4,21 @@
   <%- include('./partials/nav.ejs') %>
   <body>
     <div class="content">
+      <!-- if userData is not undefined add userbox -->
+      <% if (typeof userData !== 'undefined') { %>
+        <%- include('./partials/userbox') %>
+      <% } %>
+      
       <% if (postData) { %>
         <% postData.forEach(post => { %>
           <div class="msg-box">
-            <div class="user-info">
-              <b><%=  post.user[0].username %></b>
-              <i><%= post.user[0].status %></i>
-            </div>
+            <!-- if userData is not undefined show user info -->
+            <% if (typeof userData !== 'undefined') { %>
+              <div class="user-info">
+                <b><%=  post.user[0].username %></b>
+                <i><%= post.user[0].status %></i>
+              </div>
+            <% } %>
             <div class="msg-info">
               <b><%= post.createdAt.toDateString() %></b>
               <p><%= post.message %></p>

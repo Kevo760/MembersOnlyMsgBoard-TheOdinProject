@@ -4,14 +4,17 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register');
 const adminRouter = require('./routes/admin_panel');
-const session = require('express-session');
-const MongoStore = require('connect-mongo');
+const logoutRouter = require('./routes/logout');
+const addPostRouter = require('./routes/add_post');
+
 
 var app = express();
 const PORT = process.env.PORT || 3000;
@@ -49,13 +52,16 @@ app.use(session({
   store: MongoStore.create({
     mongoUrl: process.env.MONGODB_URI
   }),
-  cookie: { maxAge: new Date(Date.now() + 3600000)}
+  cookie: { expires: new Date(Date.now() + 3600000)}
 }));
 
 app.use('/', indexRouter);
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 app.use('/admin', adminRouter);
+app.use('/logout', logoutRouter);
+app.use('/addpost', addPostRouter);
+
 
 
 

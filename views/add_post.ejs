@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <%- include('./partials/head.ejs') %>
+  <%- include('./partials/nav.ejs') %>
+  <body>
+    <div class="content">
+      <form method="post"  class="add-post-form">
+        <h2>Login</h2>
+        <input
+        name="message"
+        id="message"
+        placeholder="Add a message"
+        type="text"
+        required="true"
+        >
+
+        <button type="submit">Submit</button>
+        <% if (typeof errorMsg !== 'undefined') { %>
+          <span class="err-msg"><%= errorMsg %></span>
+         <% } %>
+      </form>
+    </div>
+  </body>
+</html>

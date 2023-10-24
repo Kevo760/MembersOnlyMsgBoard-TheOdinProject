@@ -3,9 +3,11 @@ var router = express.Router();
 const asyncHandler = require("express-async-handler");
 const Post = require('../models/Post');
 const Users = require('../models/User');
+const authMidware = require('./middleware/auth_midware');
 
 /* GET home page. */
-router.get('/', asyncHandler( async (req, res, next) => {
+router.get('/', authMidware, asyncHandler( async (req, res, next) => {
+  const userData = req.userData;
 
   let perPage = 5;
   let page = req.query.page || 1;
@@ -27,7 +29,7 @@ router.get('/', asyncHandler( async (req, res, next) => {
   const nextPage = parseInt(page) + 1;
   const hasNextPage = nextPage <= Math.ceil(count / perPage);
 
-  res.render('index', { title: 'Mini Msg Board', postData: getPost, current: page, nextPage: hasNextPage ? nextPage : null});
+  res.render('index', { title: 'Mini Msg Board', postData: getPost, current: page, nextPage: hasNextPage ? nextPage : null, userData});
 }
 ));
 

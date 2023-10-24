@@ -3,14 +3,25 @@ const User = require('../models/User');
 var router = express.Router();
 const asyncHandler = require("express-async-handler");
 const bcrypt = require('bcrypt');
+const authMidware = require('./middleware/auth_midware');
 
 /* GET register page. */
-router.get('/', function(req, res, next) {
+router.get('/', authMidware, function(req, res, next) {
+  const userData = req.userData;
+  if(userData) {
+    return res.redirect('/')
+   }
+
   res.render('register', { title: 'Register' });
 });
 
 /* POST register page when user registers an account. */
-router.post('/', asyncHandler( async (req, res, next) => {
+router.post('/', authMidware, asyncHandler( async (req, res, next) => {
+  const userData = req.userData;
+  if(userData) {
+    return res.redirect('/')
+   }
+
   try {
   const { username, password, verifypw } = req.body;
 

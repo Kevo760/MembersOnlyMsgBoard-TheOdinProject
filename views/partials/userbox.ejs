@@ -1,0 +1,13 @@
+<div class="user-box bg-dark">
+    <h2><%= userData.username %></h2>
+    <p>
+      Status:
+      <% if (userData.status === 'Admin') { %>
+       <i class="admin-status">Admin</i>
+      <% } else if(userData.status === 'Premium') { %>
+        <i class="premium-status">Premium</i>
+      <% } else { %>
+        <i>Basic</i>
+      <% } %>
+    </p>
+  </div>
