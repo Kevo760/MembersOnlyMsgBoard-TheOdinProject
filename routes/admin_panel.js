@@ -13,7 +13,7 @@ router.get('/', adminAuthMidware, asyncHandler( async (req, res, next) => {
   let page = req.query.page || 1;
 
   const getPost = await Post.aggregate([ 
-  { $sort: { createdAt: 1 } },
+  { $sort: { createdAt: -1 } },
   { $lookup: { 
       from: "users",
       localField: "user",

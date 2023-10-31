@@ -4,8 +4,8 @@ const asyncHandler = require("express-async-handler");
 const Post = require('../models/Post');
 const authMidware = require('./middleware/auth_midware');
 
-/* GET home page. */
-router.get('/', authMidware, asyncHandler(async (req, res, next) => {
+/* GET add post page. */
+router.get('/', authMidware, (req, res, next) => {
   const userData = req.userData;
   
   if(!userData) {
@@ -14,13 +14,13 @@ router.get('/', authMidware, asyncHandler(async (req, res, next) => {
   }
 
   res.render('add_post', { title: 'Add Post', userData });
-}));
+});
 
 router.post('/', authMidware, asyncHandler(async (req, res, next) => {
- const userData = req.userData;
+ const userID = req.userData._id;
  const message = req.body.message;
  const post = new Post({
-  user: userData,
+  user: userID,
   message
  });
 

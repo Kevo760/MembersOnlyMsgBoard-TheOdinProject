@@ -16,7 +16,13 @@
             <% if (typeof userData !== 'undefined') { %>
               <div class="user-info">
                 <b><%=  post.user[0].username %></b>
-                <i><%= post.user[0].status %></i>
+                <% if (post.user[0].status === 'Admin') { %>
+                  <i class="admin-status">Admin</i>
+                 <% } else if(post.user[0].status === 'Premium') { %>
+                   <i class="premium-status">Premium</i>
+                 <% } else { %>
+                   <i>Basic</i>
+                 <% } %>
               </div>
             <% } %>
             <div class="msg-info">

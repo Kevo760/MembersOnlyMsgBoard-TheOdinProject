@@ -31,7 +31,11 @@
               <li class="nav-item">
                 <a class="nav-link" href="/admin">Admin Panel</a>
               </li>
-            <% } %>
+            <% } else if(typeof userData !== 'undefined' && userData.status === 'Basic') { %>
+              <li class="nav-item">
+                <a class="nav-link" href="/membership">Upgrade Membership</a>
+              </li>
+            <% }%>  
 
             <hr>
             <!-- If userData is undefined show login or register else show log out -->

@@ -14,6 +14,7 @@ const registerRouter = require('./routes/register');
 const adminRouter = require('./routes/admin_panel');
 const logoutRouter = require('./routes/logout');
 const addPostRouter = require('./routes/add_post');
+const memberRouter = require('./routes/membership');
 
 
 var app = express();
@@ -61,6 +62,7 @@ app.use('/login', loginRouter);
 app.use('/admin', adminRouter);
 app.use('/logout', logoutRouter);
 app.use('/addpost', addPostRouter);
+app.use('/membership', memberRouter);
 
 
 

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <%- include('./partials/head.ejs') %>
+  <%- include('./partials/nav.ejs') %>
+  <body>
+    <div class="content">
+      <form method="post"  class="membership-page bg-dark">
+        <h3>Enter the secret code to upgrade to premium</h3>
+        <input
+        name="code"
+        id="code"
+        placeholder="Enter code"
+        type="text"
+        required="true"
+        minlength="1"
+        >
+        
+        <button type="submit">Submit</button>
+        <% if (typeof errorMsg !== 'undefined') { %>
+          <span class="err-msg"><%= errorMsg %></span>
+         <% } %>
+      </form>
+    </div>
+  </body>
+</html>

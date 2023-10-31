@@ -4,20 +4,19 @@
   <%- include('./partials/nav.ejs') %>
   <body>
     <div class="content">
-      <form method="post"  class="add-post-form">
-        <h2>Login</h2>
+      <form method="post"  class="add-post-form bg-dark">
+        <h2>Add Post</h2>
         <input
         name="message"
         id="message"
         placeholder="Add a message"
         type="text"
         required="true"
+        minlength="3"
+        maxlength="100"
         >
-
+        
         <button type="submit">Submit</button>
-        <% if (typeof errorMsg !== 'undefined') { %>
-          <span class="err-msg"><%= errorMsg %></span>
-         <% } %>
       </form>
     </div>
   </body>

@@ -140,12 +140,12 @@ input {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 120px;
+  width: 180px;
   word-break: break-all;
 }
 
 .msg-info {
-  width: fit-content;
+  width: 100%;
   overflow: auto;
 }
 
@@ -184,4 +184,7 @@ input {
   margin-left: auto;
 }
 
-/* REGISTER */
+/* MEMBERSHIP PAGE */
+.membership-page h3 {
+  color: white;
+}
