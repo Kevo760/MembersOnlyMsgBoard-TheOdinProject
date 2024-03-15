@@ -53,7 +53,7 @@ odin1234
 
 ### Links
 
-- Solution URL: [https://github.com/TheLegend760/MembersOnlyMsgBoard-TheOdinProject]
+- Solution URL: [https://github.com/Kevo760/MembersOnlyMsgBoard-TheOdinProject]
 - Live Site URL: [https://membersonly-mvoe.onrender.com]
 
 ## My process
